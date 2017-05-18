@@ -62,7 +62,20 @@
 					<li class="menu__item"><a class="menu__link" href="http://www.monicadevikristiadi.com/journal">Journal</a></li>
 				</ul>
 			</nav>
+
 			<button class="btn btn--menu">map<svg class="icon icon--menu"><use xlink:href="#icon-menu"></use></svg></button>
+
+			<section class="content">
+				<div class="dual">
+					<div class="dual__inner" id="rev-x">
+						<div class="dual__half"></div>
+					</div>
+					<div class="dual__content">
+						Monica Devi Kristiadi has ENFP-T personality: curious, observant, energetic and enthusiastic. Love to learn new things, prefer first mover than fast follower, logical person, and a high achiever.
+					</div>
+				</div>
+			</section>
+
 			<section class="content content--full flexy flexy--row">
 				<h2 class="content__title content__title--medium content__title--half content__title--right">
 					<div id="rev-4" class="content__title__inner">funky foxes love</div><br/>
@@ -126,11 +139,35 @@
 			function init() {
 				document.body.classList.remove('loading');
 
+				//******************************* Split Content **************************************
+
+					var scrollElemToWatch = document.querySelector('#rev-x'),
+					splitContent = document.querySelector('.dual__content'),
+					watcher = scrollMonitor.create(scrollElemToWatch, -300),
+					revx = new RevealFx(scrollElemToWatch, {
+						revealSettings : {
+							bgcolor: '#2d2c2c',
+							direction: 'rl',
+							duration: 800,
+							easing: 'easeInOutCirc',
+							coverArea: 50,
+							onCover: function(contentEl, revealerEl) {
+								contentEl.style.opacity = 1;
+								splitContent.classList.add('dual__content--show');
+							}
+						}
+					});
+
+				watcher.enterViewport(function() {
+					revx.reveal();
+					watcher.destroy();
+				});
+
 				//************************ Example 1 - reveal on load ********************************
 				
 				var rev1 = new RevealFx(document.querySelector('#rev-1'), {
 					revealSettings : {
-						bgcolor: '#FF6B35',
+						bgcolor: '#662E9B',
 						onCover: function(contentEl, revealerEl) {
 							contentEl.style.opacity = 1;
 						}
@@ -140,7 +177,7 @@
 
 				var rev2 = new RevealFx(document.querySelector('#rev-2'), {
 					revealSettings : {
-						bgcolor: '#D8F793',
+						bgcolor: '#F1C40F',
 						delay: 250,
 						onCover: function(contentEl, revealerEl) {
 							contentEl.style.opacity = 1;
@@ -370,7 +407,7 @@
 
 			document.querySelector('.btn--menu').addEventListener('click', function() {
 				revealer.reveal({
-					bgcolor: '#7f40f1',
+					bgcolor: '#EA3546',
 					duration: 400, 
 					easing: 'easeInOutCubic',
 					onCover: function(contentEl, revealerEl) {
@@ -388,7 +425,7 @@
 				closeCtrl.removeEventListener('click', closeMenu);
 				navEl.classList.remove('menu--open');
 				revealer.reveal({
-					bgcolor: '#7f40f1',
+					bgcolor: '#EA3546',
 					duration: 400, 
 					easing: 'easeInOutCubic',
 					onCover: function(contentEl, revealerEl) {

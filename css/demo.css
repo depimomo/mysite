@@ -87,7 +87,7 @@ a:focus {
 .js .loading::before {
 	content: '';
 	position: fixed;
-	z-index: 100;
+	z-index: 150;
 	top: 0;
 	left: 0;
 	display: flex;
@@ -445,7 +445,7 @@ a:focus {
 	list-style-type: none;
 	padding: 20vh 3em;
 	margin: 0;
-	background: #fcf652;
+	background: #F1C40F;
 	overflow: hidden;
 }
 
@@ -684,7 +684,7 @@ a:focus {
 	height: 100%;
 	width: 51%;
 	right: 0;
-	background: url(../img/4.jpg) no-repeat 50% 0%;
+	background: url(../img/myimg2.png) no-repeat 50% 0%;
 	background-size: cover;
 }
 
